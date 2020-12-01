@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+	<h:head>
+		<title>Coffee shop online order</title>
+		<h:outputStylesheet name="style.css" library="css"/>
+	</h:head>
+	
+	<h:body>
+		<h:form>
+			<h1>Coffee shop online order</h1>
+			<p>Hi Dear Customer, Choose your items below:</p>
+			
+			<h:panelGrid columns="5" style="height: 50px; width: 950px;">
+				<h:outputText value="Meal"/>
+				<h:outputText value="Type"/>
+				<h:outputText value="Quantity"/>
+				<h:outputText value="Price"/>
+				<h:outputText/>
+				
+				<h:outputText value="Breakfast Combo"/>
+				<h:selectOneMenu id="ComboSelectOneMenu">
+					<f:selectItem itemValue="WC" itemLabel="With Coffee"/>
+					<f:selectItem itemValue="WT" itemLabel="With Tea"/>
+				</h:selectOneMenu>
+				<h:inputText id="ComboInputText" required="true"
+               		requiredMessage="Please enter the quantity of your breakfast combo"
+               		value="#{orderBean.comboQuantity}">
+            	</h:inputText>
+				<h:outputText value="$11.99"/>
+				<h:message for="ComboInputText" styleClass="error"/>
+			
+				<h:outputText value="Hot Coffee"/>
+				<h:selectOneMenu id="CoffeeSelectOneMenu">
+					<f:selectItem itemValue="COL" itemLabel="Colombian"/>
+					<f:selectItem itemValue="RES" itemLabel="Reserva"/>
+					<f:selectItem itemValue="INT" itemLabel="Internet &amp; World Wide Web How to Program"/>
+					<f:selectItem itemValue="DEC" itemLabel="Decaf"/>
+					<f:selectItem itemValue="COF" itemLabel="Coffee misto"/>
+					<f:selectItem itemValue="DAR" itemLabel="Dark roast"/>
+				</h:selectOneMenu>
+				<h:inputText id="CoffeeInputText" required="true"
+               		requiredMessage="Please enter the quantity of your hot coffee"
+               		value="#{orderBean.coffeeQuantity}">
+            	</h:inputText>
+				<h:outputText value="$2.99"/>
+				<h:message for="CoffeeInputText" styleClass="error"/>
+				
+				<h:outputText value="Hot Tea"/>
+				<h:selectOneMenu id="TeaSelectOneMenu">
+					<f:selectItem itemValue="GRE" itemLabel="Green"/>
+					<f:selectItem itemValue="ENG" itemLabel="English breakfat"/>
+					<f:selectItem itemValue="CHA" itemLabel="Chai"/>
+					<f:selectItem itemValue="LAT" itemLabel="Latte"/>
+					<f:selectItem itemValue="LON" itemLabel="London fog"/>
+				</h:selectOneMenu>
+				<h:inputText id="TeaInputText" required="true"
+               		requiredMessage="Please enter the quantity of your hot tea"
+               		value="#{orderBean.teaQuantity}">
+            	</h:inputText>
+				<h:outputText value="$3.49"/>
+				<h:message for="TeaInputText" styleClass="error"/>
+				
+			</h:panelGrid>
+			
+			<p>How would you like to get your items?</p>
+			
+			<h:panelGrid columns="2" style="height: 30px; width: 350px;">
+				<h:message for="DelSelectOneRadio" styleClass="error"/>
+				<h:selectOneRadio id="DelSelectOneRadio" layout="pageDirection" required="true"
+               		requiredMessage="Please enter Delivery or Take out">
+            		<f:selectItem itemValue="Delivery" itemLabel="Delivery"/>
+            		<f:selectItem itemValue="Take out" itemLabel="Take out"/>
+        		</h:selectOneRadio>
+			</h:panelGrid>
+			
+			
+	
+			<h:commandButton value="Place Order"/>
+			<h:outputText escape="false" value="#{orderBean.result}"/>
+		</h:form>
+	</h:body>
+
+</html>
+
+
